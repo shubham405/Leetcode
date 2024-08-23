@@ -2,6 +2,7 @@ class Solution {
 public:
     int minSwaps(vector<int>& nums) {
         int count = 0, ans = INT_MAX;
+        
       for(auto it: nums)
       {
         if(it)
@@ -9,9 +10,11 @@ public:
             count++;
         }
       }
+      if(count==0 || count == nums.size())
+          return 0;
       int c0=0, c1 =0 ;
       int n  = nums.size();
-      for(int i = 0 ,j =0;i<2*nums.size()-1;i++)
+      for(int i = 0 ,j =0;i<nums.size()+count-1;i++)
       {
         if(nums[i%n])
         {
