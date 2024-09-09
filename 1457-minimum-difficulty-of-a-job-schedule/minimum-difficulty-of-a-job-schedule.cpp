@@ -1,6 +1,6 @@
 class Solution {
 public:
-int dp[11][301];
+int dp[12][302];
   int f(int i, vector<int>&job, int d)
   {
     if(i==job.size())
@@ -28,7 +28,24 @@ int dp[11][301];
 
         if(d>job.size())
            return -1;
-        memset(dp,-1,sizeof(dp));
-        return f(0,job,d);
+        int n = job.size();
+        for(int i = 0;i<n;i++)
+        {
+            dp[1][i] = *max_element(job.begin()+i,job.end());
+        }
+        for(int days = 2;days<=d;days++)
+        {
+            for(int j=0;j<=n-days;j++)
+            {
+                  int ans = 1e9,maxi = job[j];
+                for(int x=j;x<=n-days;x++)
+                {
+                    maxi = max(maxi,job[x]);
+                    ans = min(ans,maxi+dp[days-1][x+1]);
+                }
+                dp[days][j] = ans;
+            }
+        }
+        return dp[d][0];
     }
 };
