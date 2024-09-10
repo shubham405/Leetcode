@@ -14,7 +14,7 @@ public:
             {
                 return -1;
             }
-            ans+= ceil((y+2)/3);
+            ans+= (y+2)/3;
         }
         return ans;
     
