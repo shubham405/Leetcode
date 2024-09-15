@@ -47,6 +47,7 @@ public:
         int n = s.size();
         vector<vector<int>> dp(n+1,vector<int>(n+1,0));
         int ans=0;
+        //blueprint for any palindromic problem
         for(int L=1;L<=n;L++)
         {
             for(int i=0;i+L-1<n ; i++)
