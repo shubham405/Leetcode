@@ -3,7 +3,7 @@ public:
     int longestIdealString(string s, int k) {
         
         int n = s.size(), ans  = 1;;
-        vector<int> dp(n,0), temp(26,0);
+        vector<int> temp(26,0);
         for(int i =0;i<n;i++)
         {
             int cur = s[i]-'a';
@@ -17,10 +17,7 @@ public:
             temp[cur] = max(temp[cur],maxi+1);
             ans = max(ans,temp[cur]);
         }
-        // for(auto it:temp)
-        // {
-        //     cout<<it<<" ";
-        // }
+       
         return ans;
     }
 };
